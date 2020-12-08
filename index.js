@@ -71,7 +71,6 @@
         
       if (score > 30) {
 
-            count += 1;
             const minY = predictionBoxes[i * 4] * video.height
             const minX = predictionBoxes[i * 4 + 1] * video.width
             const maxY = predictionBoxes[i * 4 + 2] * video.height
