@@ -49,8 +49,9 @@
     var num_detections = predictions[1].dataSync()
     num_detections += num_detections
 
-    count.fillText("Number of shoes" + num_detections);
-
+    var num_text = document.createTextNode(num_detections);
+    count.appendChild(num_text);
+    
     tf4d.dispose();
     smallImg.dispose();
     tfImg.dispose();
