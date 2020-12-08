@@ -46,12 +46,8 @@
     // const resized = tf.cast(smallImg, tf.float16)
     // const tf4d = tf.tensor4d(Array.from(resized.dataSync()), [1, 300, 300, 3]) // 600, 450
     const predictions = await model.executeAsync({ image_tensor: tf4d }, ['detection_boxes', 'num_detections', 'detection_classes', 'detection_scores'])
-    var num_detections = predictions[1].dataSync()
-    num_detections += num_detections
+    var count = 0;
 
-    var num_text = document.createTextNode(num_detections);
-    count.appendChild(num_text);
-    
     tf4d.dispose();
     smallImg.dispose();
     tfImg.dispose();
@@ -72,6 +68,9 @@
         // console.log(score)
         
       if (score > 30) {
+
+            count += 1;
+            video.fillText("Shoes Counted: " + count)
             const minY = predictionBoxes[i * 4] * video.height
             const minX = predictionBoxes[i * 4 + 1] * video.width
             const maxY = predictionBoxes[i * 4 + 2] * video.height
