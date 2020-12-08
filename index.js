@@ -70,7 +70,7 @@
       if (score > 30) {
 
             count += 1;
-            video.fillText("Shoes Counted: " + count, 0. 50);
+            video.fillText("Shoes Counted: " + count, 0, 50);
             const minY = predictionBoxes[i * 4] * video.height
             const minX = predictionBoxes[i * 4 + 1] * video.width
             const maxY = predictionBoxes[i * 4 + 2] * video.height
