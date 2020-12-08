@@ -18,10 +18,13 @@
   const canvas = document.getElementById("canvas");
   const status = document.getElementById("status");
   const context = canvas.getContext("2d");
+  const count = document.getElementById("counter");
   canvas.width = document.body.clientWidth; //document.width is obsolete
   canvas.height = document.body.clientHeight; //document.height is obsolete
   video.width = document.body.clientWidth; //document.width is obsolete
   video.height = document.body.clientHeight; //document.height is obsolete
+  count.width = document.body.clientWidth;
+  count.height = document.body.clientHeight;
   const stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
@@ -43,6 +46,10 @@
     // const resized = tf.cast(smallImg, tf.float16)
     // const tf4d = tf.tensor4d(Array.from(resized.dataSync()), [1, 300, 300, 3]) // 600, 450
     const predictions = await model.executeAsync({ image_tensor: tf4d }, ['detection_boxes', 'num_detections', 'detection_classes', 'detection_scores'])
+    const num_detections += predictions[1].dataSync();
+
+    count.fillText("Number of shoes" + num_detections)
+
     tf4d.dispose();
     smallImg.dispose();
     tfImg.dispose();
