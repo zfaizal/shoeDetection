@@ -25,6 +25,7 @@
   video.height = document.body.clientHeight; //document.height is obsolete
   count.width = document.body.clientWidth;
   count.height = document.body.clientHeight;
+  var num_detections = 0;
   const stream = await navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
@@ -46,7 +47,6 @@
     // const resized = tf.cast(smallImg, tf.float16)
     // const tf4d = tf.tensor4d(Array.from(resized.dataSync()), [1, 300, 300, 3]) // 600, 450
     const predictions = await model.executeAsync({ image_tensor: tf4d }, ['detection_boxes', 'num_detections', 'detection_classes', 'detection_scores'])
-    var num_detections = 0;
 
     tf4d.dispose();
     smallImg.dispose();
