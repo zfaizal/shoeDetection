@@ -46,7 +46,7 @@
     // const resized = tf.cast(smallImg, tf.float16)
     // const tf4d = tf.tensor4d(Array.from(resized.dataSync()), [1, 300, 300, 3]) // 600, 450
     const predictions = await model.executeAsync({ image_tensor: tf4d }, ['detection_boxes', 'num_detections', 'detection_classes', 'detection_scores'])
-    const num_detections = predictions[1].dataSync()
+    var num_detections = predictions[1].dataSync()
     num_detections += num_detections
 
     count.fillText("Number of shoes" + num_detections);
