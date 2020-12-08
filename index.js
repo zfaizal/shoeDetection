@@ -46,9 +46,7 @@
     // const resized = tf.cast(smallImg, tf.float16)
     // const tf4d = tf.tensor4d(Array.from(resized.dataSync()), [1, 300, 300, 3]) // 600, 450
     const predictions = await model.executeAsync({ image_tensor: tf4d }, ['detection_boxes', 'num_detections', 'detection_classes', 'detection_scores'])
-    var num_detections = predictions[1].dataSync()
-    num_detections += num_detections
-    console.log(num_detections)
+    var num_detections = 0;
 
     tf4d.dispose();
     smallImg.dispose();
@@ -71,6 +69,8 @@
         
       if (score > 30) {
 
+            num_detections +=1;
+            console.log(num_detections)
             const minY = predictionBoxes[i * 4] * video.height
             const minX = predictionBoxes[i * 4 + 1] * video.width
             const maxY = predictionBoxes[i * 4 + 2] * video.height
