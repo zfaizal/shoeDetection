@@ -67,11 +67,11 @@
 
         // console.log(score)
         
-      if (score > 70) {
+      if (score > 80) {
 
             num_detections +=1
             console.log(num_detections)
-            count.innerHtml = num_detections
+            count.innerHTML = num_detections
             const minY = predictionBoxes[i * 4] * video.height
             const minX = predictionBoxes[i * 4 + 1] * video.width
             const maxY = predictionBoxes[i * 4 + 2] * video.height
