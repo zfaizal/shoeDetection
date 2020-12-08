@@ -18,7 +18,7 @@
   const canvas = document.getElementById("canvas");
   const status = document.getElementById("status");
   const context = canvas.getContext("2d");
-  const count = document.getElementById("counter");
+  const count = document.getElementById("p_counter");
   canvas.width = document.body.clientWidth; //document.width is obsolete
   canvas.height = document.body.clientHeight; //document.height is obsolete
   video.width = document.body.clientWidth; //document.width is obsolete
@@ -67,10 +67,11 @@
 
         // console.log(score)
         
-      if (score > 30) {
+      if (score > 70) {
 
-            num_detections +=1;
+            num_detections +=1
             console.log(num_detections)
+            count.innerHtml = num_detections
             const minY = predictionBoxes[i * 4] * video.height
             const minX = predictionBoxes[i * 4 + 1] * video.width
             const maxY = predictionBoxes[i * 4 + 2] * video.height
